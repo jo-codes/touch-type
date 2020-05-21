@@ -31,3 +31,12 @@ const keys = {
   '/': '.',
 };
 
+const fallingLetters = document.getElementById('falling-letters');
+const scoreboard = document.getElementById('scoreboard');
+const keyboard = document.getElementById('keyboard');
+
+for (let [key, value] of Object.entries(keys)) {
+  let keyCombo = document.createElement('button');
+  keyboard.appendChild(keyCombo).className = `grid-item`;
+  keyboard.appendChild(keyCombo).innerHTML = `${key}: ${value}`;
+}
