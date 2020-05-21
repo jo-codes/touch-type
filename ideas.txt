@@ -1,0 +1,22 @@
+// bottom keyboard
+
+1 show hebrew english keyboard on bottom of screen
+2 add event listeners to each key 
+3 add effect / animation to keypress
+
+// generate falling text
+
+1 make array with hebrew letters
+2 print 5 hebrew letters every 15 seconds
+3 make effect (complicated) to have text fall down screen
+
+// connect keyboard to falling letters
+
+1 access current array of letters
+2 match event listener onclick and search array
+3 if match change letter at index to green
+4 increment points
+
+// functions
+
+?
