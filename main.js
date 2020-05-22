@@ -1,6 +1,4 @@
 const keys = {
-  q: '/',
-  w: "'",
   e: 'ק',
   r: 'ר',
   t: 'א',
@@ -18,7 +16,7 @@ const keys = {
   j: 'ח',
   k: 'ל',
   l: 'ך',
-  ';': 'ף',
+  e1: 'ף',
   z: 'ז',
   x: 'ס',
   c: 'ב',
@@ -26,17 +24,17 @@ const keys = {
   b: 'נ',
   n: 'מ',
   m: 'צ',
-  ',': 'ת',
-  '.': 'ץ',
-  '/': '.',
+  e2: 'ת',
+  e3: 'ץ',
 };
 
-const fallingLetters = document.getElementById('falling-letters');
+const letters = document.getElementById('letters');
 const scoreboard = document.getElementById('scoreboard');
 const keyboard = document.getElementById('keyboard');
 
 for (let [key, value] of Object.entries(keys)) {
   let keyCombo = document.createElement('button');
   keyboard.appendChild(keyCombo).className = `grid-item`;
+  keyboard.appendChild(keyCombo).id = `${key}`;
   keyboard.appendChild(keyCombo).innerHTML = `${key}: ${value}`;
 }

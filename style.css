@@ -1,0 +1,144 @@
+body {
+  width: 100%,
+  height: 100%
+}
+
+#container {
+  width: 100%,
+  height: 100%,
+  display: grid;
+  background-color: blue;  
+}
+
+#letters {
+  display: grid;
+  grid-area: letters;
+  background-color: blueviolet;
+}
+
+#keyboard {
+  display: grid;
+  grid-area: keyboard;
+  background-color: cadetblue;
+}
+
+#scoreboard {
+  display: grid;
+  grid-area: scoreboard;
+  background-color: chartreuse;
+}
+
+button {
+  width: 50px;
+  height: 50px;
+}
+
+/* I don't like this sopping wet code at all, but I was pressed for time and mental energy, so I wrote it all manually */
+
+#e {
+  grid-area: e;
+}
+
+#r {
+  grid-area: r;
+}
+
+#t {
+  grid-area: t;
+}
+
+#y {
+  grid-area: y;
+}
+
+#u {
+  grid-area: u;
+}
+
+#i {
+  grid-area: i;
+}
+
+#o {
+  grid-area: o;
+}
+
+#p {
+  grid-area: p;
+}
+
+#a {
+  grid-area: a;
+}
+
+#s {
+  grid-area: s;
+}
+
+#d {
+  grid-area: d;
+}
+
+#f {
+  grid-area: f;
+}
+
+#g {
+  grid-area: g;
+}
+
+#h {
+  grid-area: h;
+}
+
+#j {
+  grid-area: j;
+}
+
+#k {
+  grid-area: k;
+}
+
+#l {
+  grid-area: l;
+}
+
+#e1 {
+  grid-area: e1;
+}
+
+#z {
+  grid-area: z;
+}
+
+#x {
+  grid-area: x;
+}
+
+#c {
+  grid-area: c;
+}
+
+#v {
+  grid-area: v;
+}
+
+#b {
+  grid-area: b;
+}
+
+#n {
+  grid-area: n;
+}
+
+#m {
+  grid-area: m;
+}
+
+#e2 {
+  grid-area: e2;
+}
+
+#e3 {
+  grid-area: e3;
+}
