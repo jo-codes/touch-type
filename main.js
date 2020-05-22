@@ -36,5 +36,5 @@ for (let [key, value] of Object.entries(keys)) {
   let keyCombo = document.createElement('button');
   keyboard.appendChild(keyCombo).className = `grid-item`;
   keyboard.appendChild(keyCombo).id = `${key}`;
-  keyboard.appendChild(keyCombo).innerHTML = `${key}: ${value}`;
+  keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
 }
