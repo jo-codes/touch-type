@@ -1,7 +1,7 @@
 body,
 html {
-  width: 100%;
-  height: 100%;
+  width: 99%;
+  height: 99%;
 }
 
 #container {
@@ -29,12 +29,12 @@ html {
   display: grid;
   grid-area: keyboard;
   background-color: cadetblue;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
   grid-template-areas:
-    '. e r t y u i o p . .'
-    'a s d f g h j k l e1 .'
-    'z x c v b n m e2 e3 . .';
-  justify-content: center;
-  align-content: center;
+    '. . e r t y u i o p . .'
+    '. a s d f g h j k l e1 .'
+    '. z x c v b n m e2 e3 . .';
 }
 
 #scoreboard {
@@ -50,8 +50,6 @@ html {
 }
 
 button {
-  width: 85px;
-  height: 85px;
   font-size: large;
   font-weight: 600;
 }
