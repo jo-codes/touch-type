@@ -32,9 +32,14 @@ const letters = document.getElementById('letters');
 const scoreboard = document.getElementById('scoreboard');
 const keyboard = document.getElementById('keyboard');
 
+const sayClicked = (key) => {
+  console.log(`${key.id} was clicked!`);
+};
+
 for (let [key, value] of Object.entries(keys)) {
   let keyCombo = document.createElement('button');
   keyboard.appendChild(keyCombo).className = `grid-item`;
   keyboard.appendChild(keyCombo).id = `${key}`;
   keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
+  keyboard.appendChild(keyCombo).setAttribute(`onclick`, `sayClicked(this)`);
 }
