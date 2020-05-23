@@ -169,7 +169,7 @@ const checkArrayPoints = () => {
 const runGame = (num) => {
   points = 100;
   updatePoints(points);
-  let time = 15;
+  let time = 25;
   updateSeconds(time);
   newLetters(num);
   var timeinterval = setInterval(function () {
@@ -179,7 +179,7 @@ const runGame = (num) => {
       newLetters(num);
       removeAnimation();
       animateText();
-      time = 16;
+      time = 26;
       setTimeout(1000);
     }
     if (points <= 0) {
@@ -194,7 +194,7 @@ const runGame = (num) => {
 };
 
 alert(
-  '\n\nYou start with 100 points. \n\nEvery 15 seconds new letters are generated. \n\nLeftover letters each deduct one point. \n\nClearing all the letters will give you 5 additional points. \n\nTry keep it going as long as you can!\n\n'
+  '\n\nYou start with 100 points. \n\nEvery 25 seconds new letters are generated. \n\nLeftover letters each deduct one point. \n\nClearing all the letters will give you 5 additional points. \n\nTry keep it going as long as you can!\n\n'
 );
 
 runGame(5);
