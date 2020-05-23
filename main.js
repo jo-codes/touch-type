@@ -1,4 +1,6 @@
 const keys = {
+  q: '',
+  w: '',
   e: 'ק',
   r: 'ר',
   t: 'א',
@@ -52,6 +54,7 @@ let makeLetters = (arr) => {
   letters.appendChild(letter).innerHTML = `${arr
     .toString()
     .replace(/,/g, ' ')}`;
+  letters.appendChild(letter).className = `animate`;
 };
 
 // generates random letters from global var
@@ -121,6 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
     matchClicked(key);
   });
 });
+
+// function that moves text down the screen at a set pace
+
+// function that takes an amount of letters and starts game
 
 const runGame = (num) => {
   points = 0;

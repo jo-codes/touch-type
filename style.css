@@ -33,11 +33,12 @@ html {
   grid-area: keyboard;
   background-color: cadetblue;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(13, 1fr);
   grid-template-areas:
-    '. . e r t y u i o p . .'
-    '. a s d f g h j k l e1 .'
-    '. z x c v b n m e2 e3 . .';
+    '. q w e r t y u i o p . .'
+    '. a s d f g h j k l e1 . .'
+    '. . z x c v b n m e2 e3 . .';
+  padding-left: 2rem;
 }
 
 #scoreboard {
@@ -61,6 +62,14 @@ button {
 }
 
 /* I don't like this sopping wet code at all, but I was pressed for time and mental energy, so I wrote it all manually */
+
+#q {
+  grid-area: q;
+}
+
+#w {
+  grid-area: w;
+}
 
 #e {
   grid-area: e;
