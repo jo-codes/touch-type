@@ -28,6 +28,68 @@ html {
   justify-content: center;
 }
 
+/* CSS animation class below */
+
+.text {
+  -webkit-transform-origin: left center;
+  -ms-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-animation: fall 4s infinite;
+  animation: fall 4s infinite;
+}
+
+@-webkit-keyframes fall {
+  from,
+  15% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
+    opacity: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.07, 2.02, 0.67, 0.57);
+    animation-timing-function: cubic-bezier(0.07, 2.02, 0.67, 0.57);
+  }
+  50%,
+  60% {
+    -webkit-transform: rotate(90deg) translateX(0);
+    transform: rotate(90deg) translateX(0);
+    opacity: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.13, 0.84, 0.82, 1);
+    animation-timing-function: cubic-bezier(0.13, 0.84, 0.82, 1);
+  }
+  85%,
+  to {
+    -webkit-transform: rotate(90deg) translateX(200px);
+    transform: rotate(90deg) translateX(200px);
+    opacity: 0;
+  }
+}
+
+@keyframes fall {
+  from,
+  15% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
+    opacity: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.07, 2.02, 0.67, 0.57);
+    animation-timing-function: cubic-bezier(0.07, 2.02, 0.67, 0.57);
+  }
+  50%,
+  60% {
+    -webkit-transform: rotate(90deg) translateX(0);
+    transform: rotate(90deg) translateX(0);
+    opacity: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.13, 0.84, 0.82, 1);
+    animation-timing-function: cubic-bezier(0.13, 0.84, 0.82, 1);
+  }
+  85%,
+  to {
+    -webkit-transform: rotate(90deg) translateX(200px);
+    transform: rotate(90deg) translateX(200px);
+    opacity: 0;
+  }
+}
+
+/* CSS animation class above */
+
 #keyboard {
   display: grid;
   grid-area: keyboard;

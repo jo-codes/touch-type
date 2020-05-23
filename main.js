@@ -132,7 +132,7 @@ const fallingText = document.getElementsByClassName('animate');
 const animateText = () => {
   for (const f of fallingText) {
     setTimeout(() => {
-      f.style.color = 'red';
+      f.className = 'text';
     }, 2000);
   }
 };
