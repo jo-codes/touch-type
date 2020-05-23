@@ -127,6 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // function that moves text down the screen at a set pace
 
+const fallingText = document.getElementsByClassName('animate');
+
+const animateText = () => {
+  for (const f of fallingText) {
+    setTimeout(() => {
+      f.style.color = 'red';
+    }, 2000);
+  }
+};
+
 // function that takes an amount of letters and starts game
 
 const runGame = (num) => {
@@ -134,6 +144,7 @@ const runGame = (num) => {
   updatePoints(points);
   currentLetters = randomize(hebrewLetters, num);
   makeLetters(currentLetters);
+  animateText();
 };
 
 runGame(10);
