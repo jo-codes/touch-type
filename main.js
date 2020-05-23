@@ -40,11 +40,10 @@ for (let [key, value] of Object.entries(keys)) {
 
 let makeLetters = (arr) => {
   letters.innerText = '';
-  for (c = 0; c < arr.length; c++) {
-    let letter = document.createElement('div');
-    let currentLetter = arr[c];
-    letters.appendChild(letter).innerHTML = `${currentLetter}`;
-  }
+  let letter = document.createElement('div');
+  letters.appendChild(letter).innerHTML = `${arr
+    .toString()
+    .replace(/,/g, ' ')}`;
 };
 
 let randomize = (arr, num) => {
@@ -64,7 +63,8 @@ const matchClicked = (e) => {
   for (x in currentLetters1) {
     if (keys[e] === currentLetters1[x]) {
       console.log('match');
-      currentLetters1.pop(x);
+      let index = currentLetters1.indexOf(keys[e]);
+      currentLetters1.splice(index, 1);
       makeLetters(currentLetters1);
     }
   }
@@ -86,5 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
     matchClicked(key);
+    console.log(key);
   });
 });
