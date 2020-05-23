@@ -23,6 +23,8 @@ html {
   height: 100;
   grid-area: letters;
   background-color: blueviolet;
+  align-content: center;
+  justify-content: center;
 }
 
 #keyboard {

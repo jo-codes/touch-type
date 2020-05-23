@@ -43,3 +43,30 @@ for (let [key, value] of Object.entries(keys)) {
   keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
   keyboard.appendChild(keyCombo).setAttribute(`onclick`, `sayClicked(this)`);
 }
+
+// this function needs to be called continuously as well as with random letters
+
+hebrewLetters = [];
+
+for (let [key, value] of Object.entries(keys)) {
+  hebrewLetters.push(value);
+}
+
+let makeLetters = (arr) => {
+  for (c = 0; c < arr.length; c++) {
+    let letter = document.createElement('div');
+    let currentLetter = arr[c];
+    letters.appendChild(letter).innerHTML = `${currentLetter}`;
+  }
+};
+
+let randomize = (arr, num) => {
+  let lettersToReturn = [];
+  for (i = 0; i < num; i++) {
+    let randomNum = arr[Math.floor(Math.random() * arr.length)];
+    lettersToReturn.push(randomNum);
+  }
+  return lettersToReturn;
+};
+
+makeLetters(randomize(hebrewLetters, 20));
