@@ -32,20 +32,6 @@ const letters = document.getElementById('letters');
 const scoreboard = document.getElementById('scoreboard');
 const keyboard = document.getElementById('keyboard');
 
-const sayClicked = (key) => {
-  console.log(`${key.id} was clicked!`);
-};
-
-for (let [key, value] of Object.entries(keys)) {
-  let keyCombo = document.createElement('button');
-  keyboard.appendChild(keyCombo).className = `grid-item`;
-  keyboard.appendChild(keyCombo).id = `${key}`;
-  keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
-  keyboard.appendChild(keyCombo).setAttribute(`onclick`, `sayClicked(this)`);
-}
-
-// this function needs to be called continuously as well as with random letters
-
 hebrewLetters = [];
 
 for (let [key, value] of Object.entries(keys)) {
@@ -53,6 +39,7 @@ for (let [key, value] of Object.entries(keys)) {
 }
 
 let makeLetters = (arr) => {
+  letters.innerText = '';
   for (c = 0; c < arr.length; c++) {
     let letter = document.createElement('div');
     let currentLetter = arr[c];
@@ -69,4 +56,26 @@ let randomize = (arr, num) => {
   return lettersToReturn;
 };
 
-makeLetters(randomize(hebrewLetters, 20));
+let currentLetters1 = randomize(hebrewLetters, 10);
+
+makeLetters(currentLetters1);
+
+const matchClicked = (key) => {
+  for (x in currentLetters1) {
+    if (keys[key.id] === currentLetters1[x]) {
+      console.log('match');
+      currentLetters1.pop(x);
+      makeLetters(currentLetters1);
+    }
+  }
+};
+
+for (let [key, value] of Object.entries(keys)) {
+  let keyCombo = document.createElement('button');
+  keyboard.appendChild(keyCombo).className = `grid-item`;
+  keyboard.appendChild(keyCombo).id = `${key}`;
+  keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
+  keyboard.appendChild(keyCombo).setAttribute(`onclick`, `matchClicked(this)`);
+}
+
+// this function needs to be called continuously as well as with random letters
