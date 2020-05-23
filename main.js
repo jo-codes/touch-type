@@ -16,7 +16,7 @@ const keys = {
   j: 'ח',
   k: 'ל',
   l: 'ך',
-  e1: 'ף',
+  ';': 'ף',
   z: 'ז',
   x: 'ס',
   c: 'ב',
@@ -24,8 +24,8 @@ const keys = {
   b: 'נ',
   n: 'מ',
   m: 'צ',
-  e2: 'ת',
-  e3: 'ץ',
+  ',': 'ת',
+  '.': 'ץ',
 };
 
 const letters = document.getElementById('letters');
@@ -34,12 +34,16 @@ const keyboard = document.getElementById('keyboard');
 
 // global variable of hebrew letters
 
-hebrewLetters = [];
+let hebrewLetters = [];
+let currentLetters = [];
+let points = 0;
+
+let pointDiv = document.createElement('div');
+scoreboard.appendChild(pointDiv).innerHTML = `${points.toString()}`;
 
 for (let [key, value] of Object.entries(keys)) {
   hebrewLetters.push(value);
 }
-
 // function that prints letters to div
 
 let makeLetters = (arr) => {
@@ -61,43 +65,68 @@ let randomize = (arr, num) => {
   return lettersToReturn;
 };
 
-// calling random letters function
+// creating actual keyboard
 
-let currentLetters1 = randomize(hebrewLetters, 10);
+for (let [key, value] of Object.entries(keys)) {
+  if (key === ';') {
+    let keyCombo = document.createElement('button');
+    keyboard.appendChild(keyCombo).className = `grid-item`;
+    keyboard.appendChild(keyCombo).id = `e1`;
+    keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
+  } else if (key === ',') {
+    let keyCombo = document.createElement('button');
+    keyboard.appendChild(keyCombo).className = `grid-item`;
+    keyboard.appendChild(keyCombo).id = `e2`;
+    keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
+  } else if (key === '.') {
+    let keyCombo = document.createElement('button');
+    keyboard.appendChild(keyCombo).className = `grid-item`;
+    keyboard.appendChild(keyCombo).id = `e3`;
+    keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
+  } else {
+    let keyCombo = document.createElement('button');
+    keyboard.appendChild(keyCombo).className = `grid-item`;
+    keyboard.appendChild(keyCombo).id = `${key}`;
+    keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
+  }
+}
 
-makeLetters(currentLetters1);
+// increment points function for scoreboard
+const updatePoints = (points) => {
+  pointDiv.innerHTML = `${points.toString()}`;
+};
 
 // function to check for match between keyboard and array of random letters
 
 const matchClicked = (e) => {
-  for (x in currentLetters1) {
-    if (keys[e] === currentLetters1[x]) {
-      console.log('match');
-      let index = currentLetters1.indexOf(keys[e]);
-      currentLetters1.splice(index, 1);
-      makeLetters(currentLetters1);
+  for (x in currentLetters) {
+    if (keys[e] === currentLetters[x]) {
+      let index = currentLetters.indexOf(keys[e]);
+      currentLetters.splice(index, 1);
+      makeLetters(currentLetters);
+      points++;
+      updatePoints(points);
     }
+    console.log(e);
   }
-  console.log(e.key);
 };
 
-// creating actual keyboard
-
-for (let [key, value] of Object.entries(keys)) {
-  let keyCombo = document.createElement('button');
-  keyboard.appendChild(keyCombo).className = `grid-item`;
-  keyboard.appendChild(keyCombo).id = `${key}`;
-  keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
-}
-
 // event listener for keyboard
-
+// seriously though this is like a function wrapped in a function wrapped in another function, cool
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   document.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
     matchClicked(key);
-    console.log(key);
   });
 });
+
+const runGame = (num) => {
+  points = 0;
+  updatePoints(points);
+  currentLetters = randomize(hebrewLetters, num);
+  makeLetters(currentLetters);
+};
+
+runGame(10);
