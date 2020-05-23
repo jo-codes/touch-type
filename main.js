@@ -45,7 +45,7 @@ let seconds = 0;
 let pointDiv = document.createElement('div');
 scoreboard.appendChild(pointDiv).innerHTML = `${points.toString()}`;
 
-let timeDiv = document.createElement('timeDiv');
+let timeDiv = document.createElement('div');
 timer.appendChild(timeDiv).innerHTML = `${seconds.toString()}`;
 
 for (let [key, value] of Object.entries(keys)) {
@@ -192,5 +192,9 @@ const runGame = (num) => {
     console.log(points);
   }, 500);
 };
+
+alert(
+  '\n\nYou start with 100 points. \n\nEvery 15 seconds new letters are generated. \n\nLeftover letters each deduct one point. \n\nClearing all the letters will give you 5 additional points. \n\nTry keep it going as long as you can!\n\n'
+);
 
 runGame(5);
