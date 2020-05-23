@@ -32,11 +32,15 @@ const letters = document.getElementById('letters');
 const scoreboard = document.getElementById('scoreboard');
 const keyboard = document.getElementById('keyboard');
 
+// global variable of hebrew letters
+
 hebrewLetters = [];
 
 for (let [key, value] of Object.entries(keys)) {
   hebrewLetters.push(value);
 }
+
+// function that prints letters to div
 
 let makeLetters = (arr) => {
   letters.innerText = '';
@@ -45,6 +49,8 @@ let makeLetters = (arr) => {
     .toString()
     .replace(/,/g, ' ')}`;
 };
+
+// generates random letters from global var
 
 let randomize = (arr, num) => {
   let lettersToReturn = [];
@@ -55,9 +61,13 @@ let randomize = (arr, num) => {
   return lettersToReturn;
 };
 
+// calling random letters function
+
 let currentLetters1 = randomize(hebrewLetters, 10);
 
 makeLetters(currentLetters1);
+
+// function to check for match between keyboard and array of random letters
 
 const matchClicked = (e) => {
   for (x in currentLetters1) {
@@ -71,6 +81,8 @@ const matchClicked = (e) => {
   console.log(e.key);
 };
 
+// creating actual keyboard
+
 for (let [key, value] of Object.entries(keys)) {
   let keyCombo = document.createElement('button');
   keyboard.appendChild(keyCombo).className = `grid-item`;
@@ -78,7 +90,7 @@ for (let [key, value] of Object.entries(keys)) {
   keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
 }
 
-// this function needs to be called continuously as well as with random letters
+// event listener for keyboard
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
