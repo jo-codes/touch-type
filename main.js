@@ -60,14 +60,15 @@ let currentLetters1 = randomize(hebrewLetters, 10);
 
 makeLetters(currentLetters1);
 
-const matchClicked = (key) => {
+const matchClicked = (e) => {
   for (x in currentLetters1) {
-    if (keys[key.id] === currentLetters1[x]) {
+    if (keys[e] === currentLetters1[x]) {
       console.log('match');
       currentLetters1.pop(x);
       makeLetters(currentLetters1);
     }
   }
+  console.log(e.key);
 };
 
 for (let [key, value] of Object.entries(keys)) {
@@ -75,7 +76,15 @@ for (let [key, value] of Object.entries(keys)) {
   keyboard.appendChild(keyCombo).className = `grid-item`;
   keyboard.appendChild(keyCombo).id = `${key}`;
   keyboard.appendChild(keyCombo).innerHTML = `${key} <br /> ${value}`;
-  keyboard.appendChild(keyCombo).setAttribute(`onclick`, `matchClicked(this)`);
 }
 
 // this function needs to be called continuously as well as with random letters
+
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase();
+    matchClicked(key);
+  });
+});
