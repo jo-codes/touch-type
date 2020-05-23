@@ -13,7 +13,7 @@ html {
   grid-template-columns: 3fr 1fr;
   grid-template-areas:
     'letters scoreboard'
-    'letters somethingElse'
+    'letters timer'
     'keyboard keyboard ';
 }
 
@@ -28,14 +28,50 @@ html {
   justify-content: center;
 }
 
+#keyboard {
+  display: grid;
+  grid-area: keyboard;
+  background-color: cadetblue;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-areas:
+    '. q w e r t y u i o p . .'
+    '. a s d f g h j k l e1 . .'
+    '. . z x c v b n m e2 e3 . .';
+  padding-left: 2rem;
+}
+
+#scoreboard {
+  display: grid;
+  grid-area: scoreboard;
+  background-color: chartreuse;
+  font-size: 16vw;
+  align-content: center;
+  justify-content: center;
+}
+
+#timer {
+  display: grid;
+  grid-area: timer;
+  background-color: crimson;
+  font-size: 16vw;
+  align-content: center;
+  justify-content: center;
+}
+
+button {
+  font-size: large;
+  font-weight: 600;
+}
+
 /* CSS animation class below */
 
 .text {
   -webkit-transform-origin: left center;
   -ms-transform-origin: left center;
   transform-origin: left center;
-  -webkit-animation: fall 4s infinite;
-  animation: fall 4s infinite;
+  -webkit-animation: fall 1s;
+  animation: fall 1s;
 }
 
 @-webkit-keyframes fall {
@@ -86,41 +122,6 @@ html {
     transform: rotate(90deg) translateX(200px);
     opacity: 0;
   }
-}
-
-/* CSS animation class above */
-
-#keyboard {
-  display: grid;
-  grid-area: keyboard;
-  background-color: cadetblue;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: repeat(13, 1fr);
-  grid-template-areas:
-    '. q w e r t y u i o p . .'
-    '. a s d f g h j k l e1 . .'
-    '. . z x c v b n m e2 e3 . .';
-  padding-left: 2rem;
-}
-
-#scoreboard {
-  display: grid;
-  grid-area: scoreboard;
-  background-color: chartreuse;
-  font-size: 16vw;
-  align-content: center;
-  justify-content: center;
-}
-
-#somethingElse {
-  display: grid;
-  grid-area: somethingElse;
-  background-color: crimson;
-}
-
-button {
-  font-size: large;
-  font-weight: 600;
 }
 
 /* I don't like this sopping wet code at all, but I was pressed for time and mental energy, so I wrote it all manually */

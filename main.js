@@ -33,15 +33,20 @@ const keys = {
 const letters = document.getElementById('letters');
 const scoreboard = document.getElementById('scoreboard');
 const keyboard = document.getElementById('keyboard');
+const timer = document.getElementById('timer');
 
 // global variable of hebrew letters
 
 let hebrewLetters = [];
 let currentLetters = [];
 let points = 0;
+let seconds = 0;
 
 let pointDiv = document.createElement('div');
 scoreboard.appendChild(pointDiv).innerHTML = `${points.toString()}`;
+
+let timeDiv = document.createElement('timeDiv');
+timer.appendChild(timeDiv).innerHTML = `${seconds.toString()}`;
 
 for (let [key, value] of Object.entries(keys)) {
   hebrewLetters.push(value);
@@ -94,9 +99,14 @@ for (let [key, value] of Object.entries(keys)) {
   }
 }
 
-// increment points function for scoreboard
+// decrement points function for scoreboard
 const updatePoints = (points) => {
   pointDiv.innerHTML = `${points.toString()}`;
+};
+
+// decrement points function for scoreboard
+const updateSeconds = (seconds) => {
+  timeDiv.innerHTML = `${seconds.toString()}`;
 };
 
 // function to check for match between keyboard and array of random letters
@@ -107,7 +117,7 @@ const matchClicked = (e) => {
       let index = currentLetters.indexOf(keys[e]);
       currentLetters.splice(index, 1);
       makeLetters(currentLetters);
-      points++;
+      points--;
       updatePoints(points);
     }
     console.log(e);
@@ -131,20 +141,45 @@ const fallingText = document.getElementsByClassName('animate');
 
 const animateText = () => {
   for (const f of fallingText) {
-    setTimeout(() => {
-      f.className = 'text';
-    }, 2000);
+    f.className = 'text';
   }
+};
+
+const removeAnimation = () => {
+  for (const f of fallingText) {
+    f.classList.remove('text');
+  }
+};
+
+let newLetters = (num) => {
+  currentLetters = randomize(hebrewLetters, num);
+  makeLetters(currentLetters);
 };
 
 // function that takes an amount of letters and starts game
 
 const runGame = (num) => {
-  points = 0;
-  updatePoints(points);
-  currentLetters = randomize(hebrewLetters, num);
-  makeLetters(currentLetters);
-  animateText();
+  score = 100;
+  updatePoints(score);
+  time = 15;
+  updateSeconds(time);
+  newLetters(num);
+  var timeinterval = setInterval(function () {
+    if (time === 0) {
+      newLetters(num);
+      removeAnimation();
+      animateText();
+      time = 16;
+      setTimeout(1000);
+      score -= 50;
+      updatePoints(score);
+    }
+    if (score <= 0) {
+      clearInterval(timeinterval);
+    }
+    time -= 1;
+    updateSeconds(time);
+  }, 500);
 };
 
 runGame(10);
