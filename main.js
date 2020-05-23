@@ -117,15 +117,13 @@ const matchClicked = (e) => {
       let index = currentLetters.indexOf(keys[e]);
       currentLetters.splice(index, 1);
       makeLetters(currentLetters);
-      points--;
-      updatePoints(points);
     }
     console.log(e);
   }
 };
 
 // event listener for keyboard
-// seriously though this is like a function wrapped in a function wrapped in another function, cool
+
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
@@ -134,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     matchClicked(key);
   });
 });
-
 // function that moves text down the screen at a set pace
 
 const fallingText = document.getElementsByClassName('animate');
@@ -156,30 +153,44 @@ let newLetters = (num) => {
   makeLetters(currentLetters);
 };
 
+// check remaining letters in array and and return points to award / remove
+
+const checkArrayPoints = () => {
+  const lettersLeft = currentLetters.length;
+  if (lettersLeft !== 0) {
+    return lettersLeft;
+  } else {
+    return parseInt('-5');
+  }
+};
+
 // function that takes an amount of letters and starts game
 
 const runGame = (num) => {
-  score = 100;
-  updatePoints(score);
-  time = 15;
+  points = 100;
+  updatePoints(points);
+  let time = 15;
   updateSeconds(time);
   newLetters(num);
   var timeinterval = setInterval(function () {
     if (time === 0) {
+      points -= checkArrayPoints();
+      updatePoints(points);
       newLetters(num);
       removeAnimation();
       animateText();
       time = 16;
       setTimeout(1000);
-      score -= 50;
-      updatePoints(score);
     }
-    if (score <= 0) {
+    if (points <= 0) {
       clearInterval(timeinterval);
+      time = 1;
+      updateSeconds(time);
     }
     time -= 1;
     updateSeconds(time);
+    console.log(points);
   }, 500);
 };
 
-runGame(10);
+runGame(5);

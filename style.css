@@ -24,7 +24,7 @@ html {
   font-size: 7vw;
   grid-area: letters;
   background-color: blueviolet;
-  align-content: top;
+  align-content: center;
   justify-content: center;
 }
 
@@ -67,6 +67,7 @@ button {
 /* CSS animation class below */
 
 .text {
+  padding-bottom: 27rem;
   -webkit-transform-origin: left center;
   -ms-transform-origin: left center;
   transform-origin: left center;
