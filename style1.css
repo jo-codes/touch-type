@@ -23,7 +23,7 @@ html {
   height: 100;
   font-size: 7vw;
   grid-area: letters;
-  background: linear-gradient(to bottom, #C475AA 0%, #4863AB 100%);
+  background-color: blueviolet;
   align-content: center;
   justify-content: center;
 }
@@ -31,7 +31,7 @@ html {
 #keyboard {
   display: grid;
   grid-area: keyboard;
-  background-color: #4863AB;
+  background-color: cadetblue;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: repeat(13, 1fr);
   grid-template-areas:
@@ -44,21 +44,19 @@ html {
 #scoreboard {
   display: grid;
   grid-area: scoreboard;
-  background-color: #FFFF66;
+  background-color: chartreuse;
   font-size: 16vw;
   align-content: center;
   justify-content: center;
-  border-radius: 5px;
 }
 
 #timer {
   display: grid;
   grid-area: timer;
-  background-color: #FA1E1E;
+  background-color: crimson;
   font-size: 16vw;
   align-content: center;
   justify-content: center;
-  border-radius: 5px;
 }
 
 button {
